@@ -21,7 +21,7 @@ public class ControlledCacheService {
 
     @CachePut(cacheNames = "myControlledCache", key = "T(com.programmerfriend.ultimateredis.ControlledCacheService).getCacheKey(#relevant)")
     public String populateCache(String relevant, String unrelevantTrackingId) {
-        return "this is it again!";
+        return unrelevantTrackingId;
     }
 
     @CacheEvict(cacheNames = "myControlledCache", key = "T(com.programmerfriend.ultimateredis.ControlledCacheService).getCacheKey(#relevant)")

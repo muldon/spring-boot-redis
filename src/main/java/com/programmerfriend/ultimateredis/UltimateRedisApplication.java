@@ -26,13 +26,13 @@ public class UltimateRedisApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        String firstString = cacheService.cacheThis("param1", UUID.randomUUID().toString());
+        String firstString = cacheService.cacheThis("param1", "aaa");
         log.info("First: {}", firstString);
-        String secondString = cacheService.cacheThis("param1", UUID.randomUUID().toString());
+        String secondString = cacheService.cacheThis("param1", "bbb");
         log.info("Second: {}", secondString);
-        String thirdString = cacheService.cacheThis("AnotherParam", UUID.randomUUID().toString());
+        String thirdString = cacheService.cacheThis("AnotherParam", "ccc");
         log.info("Third: {}", thirdString);
-        String fourthString = cacheService.cacheThis("AnotherParam", UUID.randomUUID().toString());
+        String fourthString = cacheService.cacheThis("AnotherParam", "ddd");
         log.info("Fourth: {}", fourthString);
 
         log.info("Starting controlled cache: -----------");
@@ -44,6 +44,12 @@ public class UltimateRedisApplication implements CommandLineRunner {
         getFromControlledCache("first");
         getFromControlledCache("second");
         getFromControlledCache("third");
+        
+        
+        cacheService.cacheThis("param3", "333");
+        cacheService.forgetAboutThis("param3");
+        cacheService.cacheThis("param3", "444");
+        
         //log.info("Clearing all cache entries:");
         //cacheService.forgetAboutThis("param1");
         //controlledCacheService.removeFromCache("controlledParam1");

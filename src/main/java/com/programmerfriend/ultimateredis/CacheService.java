@@ -12,7 +12,7 @@ public class CacheService {
     @Cacheable(cacheNames = "myCache", key = "'myPrefix_'.concat(#relevant)")
     public String cacheThis(String relevant, String unrelevantTrackingId){
         log.info("Returning NOT from cache. Tracking: {}!", unrelevantTrackingId);
-        return "this Is it";
+        return unrelevantTrackingId;
     }
 
     @CacheEvict(cacheNames = "myCache", key = "'myPrefix_'.concat(#relevant)")
